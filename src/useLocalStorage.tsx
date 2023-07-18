@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react"
 
 export function useLocalStorage<T>(key: string, initialValue: T | (() => T)) {
-  const jsonValue = localStorage.getItem(key)
-  if (jsonValue == null) {
-    if (typeof initialValue === "function") {
-      return (initialValue as () => T)()
+  const [value, setValue] = useState<T>(() => {
+    const jsonValue = localStorage.getItem(key)
+    if (jsonValue == null) {
+      if (typeof initialValue === "function") {
+        return (initialValue as () => T)()
+      } else {
+        return initialValue
+      }
     } else {
-      return initialValue
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+      return JSON.parse(jsonValue)
     }
-  } else {
-    JSON.parse(jsonValue)
-  }
+  })
 
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(value))
