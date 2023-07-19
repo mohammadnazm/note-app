@@ -3,6 +3,7 @@ import { Form, Stack, Row, Col, Button } from "react-bootstrap"
 import CreatableReactSelect from "react-select/creatable"
 import { NoteData, Tag } from "./App"
 import { v4 as uuidV4 } from "uuid"
+import { useNavigate } from "react-router-dom"
 
 type NoteFormProps = {
   onSubmit: (data: NoteData) => void
@@ -14,6 +15,7 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
   const titleRef = useRef<HTMLInputElement>(null)
   const markDownRef = useRef<HTMLTextAreaElement>(null)
   const [selectedTags, setSelectedTags] = useState<Tag[]>([])
+  const navigate = useNavigate()
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
@@ -21,17 +23,19 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
     onSubmit({
       title: titleRef.current!.value,
       markdown: markDownRef.current!.value,
-      tags: [],
+      tags: selectedTags,
     })
+
+    navigate("..")
   }
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Stack gap={4}>
         <Row>
           <Col>
             <Form.Group controlId="title">
-              <Form className="label">Title</Form>
+              <Form.Label className="label">Title</Form.Label>
               <Form.Control ref={titleRef} required />
             </Form.Group>
           </Col>
@@ -63,7 +67,7 @@ export function NoteForm({ onSubmit, onAddTag, availableTags }: NoteFormProps) {
           </Col>
         </Row>
         <Form.Group controlId="markdown">
-          <Form className="label">Body</Form>
+          <Form.Label className="label">Body</Form.Label>
           <Form.Control required as="textarea" ref={markDownRef} rows={15} />
         </Form.Group>
         <Stack direction="horizontal" gap={2} className="justify-content-end">
