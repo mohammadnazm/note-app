@@ -23,7 +23,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
     return notes.filter(note => {
       return (
         (title === "" ||
-          note.title.toLowerCase().includes(title.toLowerCase())) &&
+          note.title.toLowerCase.includes(title.toLowerCase())) &&
         (selectedTags.length === 0 ||
           selectedTags.every(tag =>
             note.tags.some(noteTag => noteTag.id === tag.id)
