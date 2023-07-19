@@ -23,7 +23,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
     return notes.filter(note => {
       return (
         (title === "" ||
-          note.title.toLowerCase.includes(title.toLowerCase())) &&
+          note.title?.toLowerCase().includes(title?.toLowerCase())) &&
         (selectedTags.length === 0 ||
           selectedTags.every(tag =>
             note.tags.some(noteTag => noteTag.id === tag.id)
@@ -61,7 +61,7 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
           </Col>
           <Col>
             <Form.Group controlId="tags">
-              <Form className="label">Tags</Form>
+              <Form.Label className="label">Tags</Form.Label>
               <ReactSelect
                 value={selectedTags.map(tag => {
                   return { label: tag.label, value: tag.id }
