@@ -107,11 +107,7 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
         >
           <span className="fs-5">{title}</span>
           {tags.length > 0 && (
-            <Stack
-              gap={1}
-              direction="horizontal"
-              className="justify-content-center flex-wrap"
-            >
+            <Stack gap={1} direction="horizontal" className="flex-wrap">
               {tags.map(tag => (
                 <Badge className="text-truncate" key={tag.id}>
                   {tag.label}
