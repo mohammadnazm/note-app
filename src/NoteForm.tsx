@@ -24,6 +24,10 @@ export function NoteForm({
   const [selectedTags, setSelectedTags] = useState<Tag[]>(tags)
   const navigate = useNavigate()
 
+  const goBack = () => {
+    navigate("/")
+  }
+
   function handleSubmit(e: FormEvent) {
     e.preventDefault()
 
@@ -88,7 +92,11 @@ export function NoteForm({
           <Button type="submit" variant="primary">
             Save
           </Button>
-          <Button type="button" variant="outline-secondary">
+          <Button
+            onClick={() => goBack()}
+            type="button"
+            variant="outline-secondary"
+          >
             Cancel
           </Button>
         </Stack>
