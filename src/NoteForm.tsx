@@ -76,7 +76,8 @@ export function NoteForm({
         <Form.Group controlId="markdown">
           <Form.Label className="label">Body</Form.Label>
           <Form.Control
-            defaultValue={markDown}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            defaultValue={markdown}
             required
             as="textarea"
             ref={markDownRef}
