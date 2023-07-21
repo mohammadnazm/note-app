@@ -24,9 +24,16 @@ type NoteListProps = {
   availableTags: Tag[]
 }
 
+type EditTagsModalProps = {
+  show: boolean
+  availableTags: Tag[]
+  handleClose: () => void
+}
+
 export function NoteList({ availableTags, notes }: NoteListProps) {
   const [selectedTags, setSelectedTags] = useState<Tag[]>([])
   const [title, setTitle] = useState("")
+  const [editTagsModalIsOpen, setEditTagsModalIsOpen] = useState(false)
 
   const filteredNotes = useMemo(() => {
     return notes.filter(note => {
@@ -49,10 +56,15 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
-            <Link to="new">
+            <Link to="/new">
               <Button variant="primary">Create</Button>
             </Link>
-            <Button>Edit Tags</Button>
+            <Button
+              onClick={() => setEditTagsModalIsOpen(true)}
+              variant="outline-secondary"
+            >
+              Edit Tags
+            </Button>
           </Stack>
         </Col>
       </Row>
@@ -98,7 +110,11 @@ export function NoteList({ availableTags, notes }: NoteListProps) {
           </Col>
         ))}
       </Row>
-      <EditTagsModal />
+      <EditTagsModal
+        show={editTagsModalIsOpen}
+        handleClose={() => setEditTagsModalIsOpen(false)}
+        availableTags={availableTags}
+      />
     </>
   )
 }
@@ -131,9 +147,13 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
   )
 }
 
-function EditTagsModal() {
+function EditTagsModal({
+  availableTags,
+  handleClose,
+  show,
+}: EditTagsModalProps) {
   return (
-    <Modal>
+    <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Tags</Modal.Title>
       </Modal.Header>
@@ -142,7 +162,9 @@ function EditTagsModal() {
           <Stack gap={2}>
             {availableTags.map(tag => (
               <Row key={tag.id}>
-                <Col></Col>
+                <Col>
+                  <Form.Control type="text" value={tag.label} />
+                </Col>
                 <Col xs="auto">
                   <Button variant="outline-danger">&times;</Button>
                 </Col>
