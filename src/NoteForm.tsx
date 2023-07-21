@@ -9,6 +9,9 @@ type NoteFormProps = {
   onSubmit: (data: NoteData) => void
   onAddTag: (tag: Tag) => void
   availableTags: Tag[]
+  title: ""
+  markdown: ""
+  tags: []
 }
 
 export function NoteForm({
