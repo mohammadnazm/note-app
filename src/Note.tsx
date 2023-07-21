@@ -3,9 +3,13 @@ import { useNote } from "./NoteLayout"
 import { Link } from "react-router-dom"
 import ReactMarkdown from "react-markdown"
 
-export function Note() {
+type NoteProps = {
+  onDelete: (id: string) => void
+}
+
+export function Note({ onDelete }: NoteProps) {
   const note = useNote()
-  console.log("note:", note)
+
   return (
     <>
       <Row>
