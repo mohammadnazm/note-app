@@ -1,18 +1,13 @@
-# Weather App
+# Note-Taking App
 
-WeatherApp is a user-friendly weather application that provides real-time weather updates for any location worldwide. Stay prepared with ease!
+Organize your thoughts effortlessly with our intuitive note-taking web app. Create, Update, and delete notes seamlessly, ensuring accessibility across all your devices. Simplify your note management with ease
 
 ![ezgif com-gif-maker (5)](https://github.com/mohammadnazm/note-taking-app/assets/63538356/e9961d08-feab-4c18-95d4-016c1182d889)
 
 
 ## Features
-
-1. Real-Time Weather Updates: Get the latest weather data for any location worldwide, keeping you informed about current conditions.
-2. Accurate Weather Data: Reliable weather information sourced from a trusted weather API ensures accuracy in forecasts.
-3. Intuitive Interface: User-friendly design for easy navigation and a seamless experience.
-4. Detailed Weather Information: Access comprehensive data like temperature, humidity, wind speed, and more to plan your day effectively.
-5. Location-Based Forecasting: Get weather forecasts specific to your chosen location, making it convenient for travelers and locals alike.
-
+1. Note Creation and Editing: Users can create new notes and easily edit existing ones. Basic text formatting (bold, italic, bullet points) may also be supported.
+2. Search Functionality: A powerful search feature allows users to find specific notes quickly, even in extensive collections.
 
 
 ## Installation
