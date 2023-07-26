@@ -6,7 +6,7 @@ Organize your thoughts effortlessly with our intuitive note-taking web app. Crea
 
 
 ## Features
-1. Note Creation and Editing: Users can create new notes and easily edit existing ones. Basic text formatting (bold, italic, bullet points) may also be supported.
+1. Note Creation and Editing: Users can create new notes and easily edit existing ones.
 2. Search Functionality: A powerful search feature allows users to find specific notes quickly, even in extensive collections.
 
 
